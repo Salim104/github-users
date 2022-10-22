@@ -4,7 +4,7 @@ import { MdSearch } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 const Search = () => {
   const [user,setUser] = React.useState("");
-  const {requests,error,searchGithubUser} = React.useContext(GithubContext);
+  const {requests,error,searchGithubUser,isLoading} = React.useContext(GithubContext);
 
 
   //get things from global context
@@ -28,7 +28,7 @@ const Search = () => {
            <div className='form-control'>
               <MdSearch/>
               <input type='text' value={user} onChange={(e) => setUser(e.target.value)} placeholder='enter github user'/>
-              {requests > 0 && 
+              {requests > 0 && !isLoading &&
               <button type='submit'>search</button>
               }
            </div>
